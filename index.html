@@ -263,18 +263,25 @@
         }, 1000);
 
         // RSVP
-        const form = document.getElementById('rsvpForm');
-        const guestbook = document.getElementById('guestbook');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = form.querySelector('input').value;
-            const message = form.querySelector('textarea').value;
-            
-            if(name && message) {
-                const entry = document.createElement('div');
-                entry.className = 'bg-white/80 p-4 rounded-lg border border-ocean/10 shadow-sm text-xs space-y-1 transform scale-95 opacity-0 transition-all duration-500';
-                entry.innerHTML = `<h4 class="font-bold text-ocean">${name}</h4><p class="text-charcoal/80 italic">"${message}"</p>`;
-                guestbook.prepend(entry);
+        // RSVP LANGSUNG KE WHATSAPP RIVO
+const form = document.getElementById('rsvpForm');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.querySelector('input').value;
+    const status = form.querySelector('select').value;
+    const message = form.querySelector('textarea').value;
+    
+    // GANTI nomor di bawah ini dengan nomor WhatsApp kamu (awali dengan 62, bukan 0)
+    const nomorWA = "6281231346179"; 
+    
+    // Format teks yang akan dikirim ke WhatsApp kamu
+    const teksPesan = `Halo Rivo & Vanisa, saya ingin konfirmasi kehadiran.%0A%0A*Nama:* ${name}%0A*Kehadiran:* ${status === 'hadir' ? 'Insyaallah Hadir' : 'Tidak Dapat Hadir'}%0A*Ucapan:* ${message}`;
+    
+    // Membuka WhatsApp otomatis
+    window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${teksPesan}`, '_blank');
+    form.reset();
+});
+
                 
                 // Efek motion halus saat doa baru muncul
                 setTimeout(() => {
