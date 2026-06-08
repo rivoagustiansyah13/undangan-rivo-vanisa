@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Pernikahan Rivo & Vanisa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght=400;600;700&family=Plus+Jakarta+Sans:wght=300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -110,7 +110,7 @@
     <!-- Konten Utama Undangan -->
     <main id="mainContent" class="relative z-40 hidden max-w-xl mx-auto px-4 py-12 space-y-12">
         
-        <!-- Pembuka (Reveal on Scroll) -->
+        <!-- Pembuka -->
         <section class="reveal bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-ocean/10 text-center shadow-xl space-y-4">
             <div class="text-gold text-2xl animate-spin" style="animation-duration: 10s;">🕊️</div>
             <h2 class="font-title text-ocean text-lg tracking-wide">Sampurasun / Assalamu’alaikum Wr. Wb.</h2>
@@ -119,7 +119,7 @@
             </p>
         </section>
 
-        <!-- Profil Pengantin (Reveal on Scroll) -->
+        <!-- Profil Pengantin -->
         <section class="space-y-6">
             <!-- Pengantin Pria -->
             <div class="reveal bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-l-4 border-ocean shadow-xl text-center transform hover:scale-[1.02] transition-transform duration-300">
@@ -140,7 +140,7 @@
             </div>
         </section>
 
-        <!-- Acara & Waktu (Reveal on Scroll) -->
+        <!-- Acara & Waktu -->
         <section class="reveal bg-ocean text-cream p-8 rounded-2xl shadow-xl text-center space-y-6 border border-gold/20">
             <h3 class="font-title text-goldLight text-xl tracking-widest uppercase">Waktu & Tempat Acara</h3>
             <div class="w-12 h-[1px] bg-goldLight mx-auto"></div>
@@ -170,7 +170,7 @@
             </div>
         </section>
 
-        <!-- Lokasi Maps Garut (Reveal on Scroll) -->
+        <!-- Lokasi Maps Garut -->
         <section class="reveal bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-ocean/10 text-center shadow-xl space-y-4">
             <h3 class="font-title text-ocean text-lg tracking-wider uppercase">Lokasi Pernikahan</h3>
             <p class="text-sm font-medium text-charcoal">Kampung Pasirwangi Garogol</p>
@@ -182,7 +182,7 @@
             </div>
         </section>
 
-        <!-- RSVP & Ucapan (Reveal on Scroll) -->
+        <!-- RSVP & Ucapan -->
         <section class="reveal bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-ocean/10 shadow-xl space-y-6">
             <h3 class="font-title text-center text-ocean text-lg tracking-wider uppercase">Ucapan & Doa Restu</h3>
             <form id="rsvpForm" class="space-y-4">
@@ -195,7 +195,6 @@
                 <textarea placeholder="Tulis doa restu Anda..." rows="3" class="w-full bg-white border border-ocean/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-ocean transition-all shadow-inner" required></textarea>
                 <button type="submit" class="w-full py-3 bg-gold hover:bg-goldLight text-cream font-title text-xs tracking-widest uppercase rounded shadow-md transition-all font-semibold transform active:scale-95">Kirim Doa</button>
             </form>
-            <div id="guestbook" class="space-y-3 pt-2 max-h-60 overflow-y-auto scrollbar-hide"></div>
         </section>
 
         <!-- Footer -->
@@ -221,7 +220,7 @@
             setTimeout(() => {
                 coverPage.style.display = 'none';
                 mainContent.classList.remove('hidden');
-                revealOnScroll(); // Jalankan fungsi deteksi motion scroll langsung setelah dibuka
+                revealOnScroll();
             }, 1000);
         });
 
@@ -231,7 +230,7 @@
             reveals.forEach(reveal => {
                 const windowHeight = window.innerHeight;
                 const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 100; // Elemen muncul saat berjarak 100px dari bawah layar
+                const elementVisible = 100;
                 
                 if (elementTop < windowHeight - elementVisible) {
                     reveal.classList.add('active');
@@ -262,35 +261,20 @@
             }
         }, 1000);
 
-        // RSVP
         // RSVP LANGSUNG KE WHATSAPP RIVO
-const form = document.getElementById('rsvpForm');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = form.querySelector('input').value;
-    const status = form.querySelector('select').value;
-    const message = form.querySelector('textarea').value;
-    
-    // GANTI nomor di bawah ini dengan nomor WhatsApp kamu (awali dengan 62, bukan 0)
-    const nomorWA = "6281231346179"; 
-    
-    // Format teks yang akan dikirim ke WhatsApp kamu
-    const teksPesan = `Halo Rivo & Vanisa, saya ingin konfirmasi kehadiran.%0A%0A*Nama:* ${name}%0A*Kehadiran:* ${status === 'hadir' ? 'Insyaallah Hadir' : 'Tidak Dapat Hadir'}%0A*Ucapan:* ${message}`;
-    
-    // Membuka WhatsApp otomatis
-    window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${teksPesan}`, '_blank');
-    form.reset();
-});
-
-                
-                // Efek motion halus saat doa baru muncul
-                setTimeout(() => {
-                    entry.classList.remove('scale-95', 'opacity-0');
-                    entry.classList.add('scale-100', 'opacity-100');
-                }, 50);
-                
-                form.reset();
-            }
+        const form = document.getElementById('rsvpForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = form.querySelector('input').value;
+            const status = form.querySelector('select').value;
+            const message = form.querySelector('textarea').value;
+            
+            const nomorWA = "6281231346179"; 
+            
+            const teksPesan = `Halo Rivo & Vanisa, saya ingin konfirmasi kehadiran.%0A%0A*Nama:* ${name}%0A*Kehadiran:* ${status === 'hadir' ? 'Insyaallah Hadir' : 'Tidak Dapat Hadir'}%0A*Ucapan:* ${message}`;
+            
+            window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${teksPesan}`, '_blank');
+            form.reset();
         });
     </script>
 </body>
