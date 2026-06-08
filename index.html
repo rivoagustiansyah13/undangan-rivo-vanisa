@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Pernikahan Rivo & Vanisa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;600;700&family=Shojumaru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        dark: '#1A1410',
-                        darker: '#0F0E0D',
-                        wood: '#2B221C',
-                        blood: '#9E1515',
-                        gold: '#D4AF37',
-                        paper: '#E8D9C3',
+                        sage: '#4A5D4E',
+                        sageLight: '#6B8270',
+                        sageWarm: '#F0F4F1',
+                        gold: '#C5A059',
+                        goldLight: '#E5C483',
+                        cream: '#F9F6F0',
+                        charcoal: '#2C302E'
                     },
                     fontFamily: {
-                        shoji: ['Shojumaru', 'cursive'],
-                        serif: ['Noto Serif', 'serif'],
-                    },
-                    boxShadow: {
-                        'glow': '0 0 15px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.2)',
-                        'glow-red': '0 0 15px rgba(158, 21, 21, 0.3)',
+                        script: ['Great Vibes', 'cursive'],
+                        title: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     }
                 }
             }
@@ -32,478 +30,198 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .perspective-1000 {
-                perspective: 1000px;
-            }
-            .preserve-3d {
-                transform-style: preserve-3d;
-            }
-            .ink-text {
-                position: relative;
-                overflow: hidden;
-            }
-            .ink-text span {
-                display: inline-block;
-                animation: inkBleed 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-                opacity: 0;
-                filter: blur(4px);
-                transform: translateY(10px);
-            }
-            .scrollbar-hide {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            .scrollbar-hide::-webkit-scrollbar {
-                display: none;
-            }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+            .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         }
-
-        @keyframes inkBleed {
-            0% { opacity: 0; filter: blur(4px); transform: translateY(10px) scale(0.98); }
-            50% { opacity: 0.6; filter: blur(2px); }
-            100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
-        }
-
-        @keyframes castleShift {
-            0% { transform: rotateX(1deg) rotateY(-1deg); }
-            100% { transform: rotateX(-1deg) rotateY(1deg); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0.5deg); }
-            50% { transform: translateY(-12px) rotate(-0.5deg); }
-            100% { transform: translateY(0px) rotate(0.5deg); }
-        }
-
-        @keyframes pulseGold {
-            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.7), 0 0 40px rgba(212, 175, 55, 0.2); }
-        }
-
-        @keyframes doorOpen {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); opacity: 0; visibility: hidden; }
-        }
-
-        @keyframes doorOpenRight {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(100%); opacity: 0; visibility: hidden; }
-        }
-
         body {
-            background: linear-gradient(135deg, #1A1410 0%, #0F0E0D 100%);
-            overflow-x: hidden;
+            background-color: #F9F6F0;
+            color: #2C302E;
         }
-
-        .bg-parallax {
-            background-image: 
-                linear-gradient(rgba(26, 20, 16, 0.85), rgba(15, 14, 13, 0.85)),
-                url('https://images.unsplash.com/photo-1542281286-9e0a16bb7367ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        .bg-batik {
+            background-image: linear-gradient(rgba(249, 246, 240, 0.92), rgba(249, 246, 240, 0.92)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-attachment: fixed;
-            background-position: center;
         }
-
-        .wood-pattern {
-            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 50 Q25 40 50 50 T100 50" stroke="%232B221C" stroke-width="0.5" fill="none"/%3E%3Cpath d="M0 30 Q25 20 50 30 T100 30" stroke="%232B221C" stroke-width="0.5" fill="none"/%3E%3Cpath d="M0 70 Q25 60 50 70 T100 70" stroke="%232B221C" stroke-width="0.5" fill="none"/%3E%3C/svg%3E');
+        @keyframes pulseGold {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.6; }
+        }
+        .leaf-animation {
+            animation: pulseGold 4s infinite ease-in-out;
         }
     </style>
 </head>
-<body class="text-paper font-serif scrollbar-hide">
-    <audio id="biwaSound" src="https://assets.mixkit.co/sfx/preview/mixkit-japanese-shakuhachi-flute-sound-1462.mp3" preload="auto"></audio>
-    <audio id="ambientSound" src="https://assets.mixkit.co/sfx/preview/mixkit-forest-wind-ambience-1461.mp3" preload="auto" loop muted></audio>
+<body class="font-sans scrollbar-hide antialiased bg-batik">
 
-    <div id="loading" class="fixed inset-0 bg-darker z-[100] flex items-center justify-center">
-        <div class="text-center">
-            <div class="w-20 h-20 border-2 border-gold/30 border-t-gold rounded-full animate-spin mb-6 mx-auto"></div>
-            <p class="font-shoji text-gold text-lg">Memasuki Istana Tak Terbatas...</p>
-        </div>
-    </div>
+    <audio id="sundaMusic" src="https://assets.mixkit.co/sfx/preview/mixkit-relaxing-green-nature-loop-3142.mp3" preload="auto" loop></audio>
 
-    <section id="entrance" class="fixed inset-0 z-50 perspective-1000 preserve-3d hidden">
-        <div class="absolute w-1/2 h-full left-0 bg-wood wood-pattern border-r-2 border-gold/20 transition-all duration-[2000ms] ease-out" id="doorLeft">
-            <div class="absolute inset-0 flex items-center justify-center"><div class="w-3/4 h-4/5 border-2 border-gold/10 rounded"></div></div>
+    <section id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between py-16 px-6 bg-cream text-center transition-all duration-1000 ease-in-out border-8 border-sage m-2 md:m-4 rounded-lg shadow-2xl">
+        <div class="text-sage font-title tracking-[0.2em] text-xs md:text-sm uppercase mt-4">Walimatul 'Ursy</div>
+        
+        <div class="my-auto space-y-4">
+            <div class="text-gold text-4xl mb-2 leaf-animation">🌿</div>
+            <h1 class="font-title text-sage text-2xl md:text-3xl tracking-wide">The Wedding Of</h1>
+            <div class="font-script text-gold text-6xl md:text-7xl my-6 leading-relaxed">Rivo & Vanisa</div>
+            <div class="w-24 h-[1px] bg-gold mx-auto my-4"></div>
+            <p class="text-sageLight text-sm tracking-widest font-medium uppercase">Minggu, 27 Desember 2026</p>
         </div>
-        <div class="absolute w-1/2 h-full right-0 bg-wood wood-pattern border-l-2 border-gold/20 transition-all duration-[2000ms] ease-out" id="doorRight">
-            <div class="absolute inset-0 flex items-center justify-center"><div class="w-3/4 h-4/5 border-2 border-gold/10 rounded"></div></div>
-        </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
-            <h1 class="font-shoji text-[clamp(2rem,5vw,4rem)] text-gold mb-4 drop-shadow-glow">UNDANGAN</h1>
-            <h2 class="font-shoji text-[clamp(1.2rem,3vw,2rem)] text-paper/90 mb-10">Pernikahan</h2>
-            <button id="openBtn" class="px-10 py-4 bg-wood/80 border-2 border-gold/50 text-gold font-shoji rounded-sm hover:border-gold hover:shadow-glow transition-all duration-300 transform hover:scale-105 active:scale-95">BUKA UNDANGAN</button>
+
+        <div class="space-y-4 w-full max-w-sm mb-4">
+            <p class="text-charcoal/70 text-xs tracking-wider">Kepada Bapak/Ibu/Saudara/i:</p>
+            <div class="bg-sageWarm border border-sage/20 py-3 px-4 rounded-md text-sage font-semibold shadow-sm text-sm">Tamu Undangan Spesial</div>
+            <button id="openBtn" class="w-full py-3.5 bg-sage hover:bg-sageLight text-cream font-title text-xs tracking-[0.2em] rounded shadow-md transition-all duration-300 transform active:scale-95 border border-gold/30">
+                BUKA UNDANGAN ✨
+            </button>
         </div>
     </section>
 
-    <main id="mainContent" class="relative z-40 opacity-0 transition-opacity duration-1000 bg-parallax">
-        <div class="container mx-auto px-4 py-20 max-w-4xl">
+    <main id="mainContent" class="relative z-40 hidden max-w-xl mx-auto px-4 py-12 space-y-12">
+        
+        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-sage/10 text-center shadow-xl space-y-4">
+            <div class="text-gold text-2xl">🕊️</div>
+            <h2 class="font-title text-sage text-lg tracking-wide">Sampurasun / Assalamu’alaikum Wr. Wb.</h2>
+            <p class="text-xs md:text-sm leading-relaxed text-charcoal/80 font-light">
+                Maha Suci Allah SWT yang telah menciptakan makhluk-Nya berpasang-pasangan. Dengan memohon rahmat dan rida-Nya, kami bermaksud menyelenggarakan syukuran pernikahan putra-putri kami:
+            </p>
+        </section>
+
+        <section class="space-y-6">
+            <div class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-l-4 border-sage shadow-xl text-center">
+                <div class="font-script text-gold text-5xl mb-2">Rivo</div>
+                <h3 class="font-title text-sage text-base tracking-widest font-bold uppercase mb-3">Rivo Agustiansyah</h3>
+                <p class="text-xs text-charcoal/70">Putra Kedua dari:</p>
+                <p class="text-sm font-medium text-charcoal">ALM. Bapak Firmansyah & Ibu Susan</p>
+            </div>
+
+            <div class="text-center text-gold text-2xl my-2 animate-bounce">❤️</div>
+
+            <div class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-r-4 border-sage shadow-xl text-center">
+                <div class="font-script text-gold text-5xl mb-2">Vanisa</div>
+                <h3 class="font-title text-sage text-base tracking-widest font-bold uppercase mb-3">Vanisa</h3>
+                <p class="text-xs text-charcoal/70">Putri Pertama dari:</p>
+                <p class="text-sm font-medium text-charcoal">Bapak Deni & Ibu Nurjanah</p>
+            </div>
+        </section>
+
+        <section class="bg-sage text-cream p-8 rounded-2xl shadow-xl text-center space-y-6 border border-gold/20">
+            <h3 class="font-title text-goldLight text-xl tracking-widest uppercase">Waktu & Tempat Acara</h3>
+            <div class="w-12 h-[1px] bg-goldLight mx-auto"></div>
             
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]" style="animation: castleShift 15s infinite alternate ease-in-out;">
-                    <h3 class="ink-text text-center text-2xl md:text-3xl font-semibold mb-8 text-paper/90"><span style="animation-delay: 0.2s;">Yth. Bapak/Ibu/Teman Tercinta</span></h3>
-                    <p class="ink-text text-center text-lg md:text-xl leading-relaxed"><span style="animation-delay: 0.6s;">Dengan penuh rasa syukur dan kebahagiaan yang mendalam, kami mengundang Anda untuk hadir dan meramaikan hari bahagia pernikahan kami. Di bawah naungan kasih sayang Tuhan Yang Maha Esa, kami bersiap menyatukan hati dan hidup dalam ikatan pernikahan.</span></p>
+            <p class="font-title tracking-wide text-sm text-cream/90">Minggu, 27 Desember 2026</p>
+            
+            <div class="grid grid-cols-2 gap-4 pt-2">
+                <div class="bg-sageLight/40 p-4 rounded-lg border border-cream/10">
+                    <h4 class="font-title text-xs tracking-wider text-goldLight font-bold uppercase mb-1">Akad Nikah</h4>
+                    <p class="text-xs text-cream/80">07.00 - 10.00 WIB</p>
                 </div>
-            </section>
-
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="grid md:grid-cols-2 gap-8 w-full">
-                    <div class="bg-dark/60 backdrop-blur-sm p-8 rounded-lg border border-blood/30 shadow-glow-red text-center transform hover:scale-[1.02] transition-all duration-500" style="animation: float 8s infinite ease-in-out;">
-                        <h2 class="font-shoji text-[clamp(2.5rem,6vw,4rem)] text-gold mb-3 drop-shadow-glow">RIVO</h2>
-                        <p class="text-paper/80 text-lg">Putra dari</p>
-                        <p class="text-paper font-semibold text-lg">ALM. Bapak Firmansyah & Ibu Susan</p>
-                    </div>
-                    <div class="bg-dark/60 backdrop-blur-sm p-8 rounded-lg border border-blood/30 shadow-glow-red text-center transform hover:scale-[1.02] transition-all duration-500" style="animation: float 8s infinite ease-in-out; animation-delay: 2s;">
-                        <h2 class="font-shoji text-[clamp(2.5rem,6vw,4rem)] text-gold mb-3 drop-shadow-glow">VANISA</h2>
-                        <p class="text-paper/80 text-lg">Putri dari</p>
-                        <p class="text-paper font-semibold text-lg">Bapak Deni & Ibu Nurjanah</p>
-                    </div>
+                <div class="bg-sageLight/40 p-4 rounded-lg border border-cream/10">
+                    <h4 class="font-title text-xs tracking-wider text-goldLight font-bold uppercase mb-1">Resepsi</h4>
+                    <p class="text-xs text-cream/80">10.00 - 15.00 WIB</p>
                 </div>
-                <div class="my-10 text-center text-gold text-4xl">⚔️ ❤️ ⚔️</div>
-            </section>
+            </div>
 
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                    <h3 class="font-shoji text-center text-3xl md:text-4xl text-gold mb-12 drop-shadow-glow">Hari & Waktu</h3>
-                    <div class="text-center mb-10"><p class="text-2xl md:text-3xl font-semibold text-paper">Minggu, 27 Desember 2026</p></div>
-                    <div class="space-y-6 mb-16">
-                        <div class="flex justify-between items-center border-b border-gold/10 py-4"><span class="text-xl text-paper/80">Akad Nikah</span><span class="text-xl font-semibold text-paper">07.00 – 10.00 WIB</span></div>
-                        <div class="flex justify-between items-center border-b border-gold/10 py-4"><span class="text-xl text-paper/80">Resepsi</span><span class="text-xl font-semibold text-paper">10.00 – 15.00 WIB</span></div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="text-lg text-gold/80 mb-4">Menuju Hari Bahagia</h4>
-                        <div id="countdown" class="flex justify-center gap-3 md:gap-6">
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="days">00</span><span class="text-xs text-paper/70">Hari</span></div>
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="hours">00</span><span class="text-xs text-paper/70">Jam</span></div>
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="minutes">00</span><span class="text-xs text-paper/70">Menit</span></div>
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="seconds">00</span><span class="text-xs text-paper/70">Detik</span></div>
-                        </div>
-                    </div>
+            <div class="pt-4">
+                <p class="text-xs tracking-widest uppercase text-goldLight mb-3">Hitung Mundur Hari Bahagia</p>
+                <div id="countdown" class="flex justify-center gap-4 text-charcoal">
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="days" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Hari</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="hours" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Jam</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="minutes" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Mnt</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="seconds" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Det</span></div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)] text-center">
-                    <h3 class="font-shoji text-3xl md:text-4xl text-gold mb-8 drop-shadow-glow">Lokasi Acara</h3>
-                    <p class="text-xl md:text-2xl mb-8 text-paper">Kampung Pasirwangi Garogol, Kec. Cibungbulang, Kab. Bogor</p>
-                    <a href="https://www.google.com/maps/search/Kampung+Pasirwangi+Garogol,+Kec.+Cibungbulang,+Kab.+Bogor" target="_blank" class="inline-block px-8 py-4 bg-wood border-2 border-gold/50 text-gold rounded-sm hover:border-gold hover:shadow-glow transition-all duration-300 transform hover:scale-105">📍 Buka Google Maps</a>
-                </div>
-            </section>
+        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-sage/10 text-center shadow-xl space-y-4">
+            <h3 class="font-title text-sage text-lg tracking-wider uppercase">Lokasi Pernikahan</h3>
+            <p class="text-sm font-medium text-charcoal">Kampung Pasirwangi Garogol</p>
+            <p class="text-xs text-charcoal/70 leading-relaxed">Kec. Cibungbulang, Kab. Bogor, Jawa Barat</p>
+            <div class="pt-2">
+                <a href="https://maps.google.com" target="_blank" class="inline-block px-6 py-3 bg-sage hover:bg-sageLight text-cream text-xs font-title tracking-widest uppercase rounded shadow-md transition-all">
+                    📍 Buka Google Maps
+                </a>
+            </div>
+        </section>
 
-            <section class="min-h-[80vh] flex flex-col items-center justify-center perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                    <h3 class="font-shoji text-center text-3xl text-gold mb-10 drop-shadow-glow">Ucapan & Konfirmasi</h3>
-                    <form id="rsvpForm" class="mb-16 space-y-5 max-w-md mx-auto">
-                        <div><input type="text" placeholder="Nama Lengkap" class="w-full bg-wood/50 border border-gold/20 rounded-sm px-4 py-3 text-paper focus:outline-none focus:border-gold focus:shadow-glow transition-all"></div>
-                        <div><select class="w-full bg-wood/50 border border-gold/20 rounded-sm px-4 py-3 text-paper focus:outline-none focus:border-gold focus:shadow-glow transition-all"><option value="" disabled selected>Konfirmasi Kehadiran</option><option value="hadir">Insyaallah Hadir</option><option value="ragu">Belum Pasti</option><option value="tidak">Tidak Dapat Hadir</option></select></div>
-                        <div><textarea placeholder="Tulis ucapan & doa restu..." rows="4" class="w-full bg-wood/50 border border-gold/20 rounded-sm px-4 py-3 text-paper focus:outline-none focus:border-gold focus:shadow-glow transition-all"></textarea></div>
-                        <button type="submit" class="w-full py-3 bg-gold/90 text-darker font-semibold rounded-sm hover:bg-gold shadow-glow transition-all transform hover:scale-[1.02] active:scale-95">Kirim Ucapan</button>
-                    </form>
-                    <div id="guestbook" class="grid md:grid-cols-2 gap-6"></div>
-                </div>
-            </section>
+        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-sage/10 shadow-xl space-y-6">
+            <h3 class="font-title text-center text-sage text-lg tracking-wider uppercase">Ucapan & Doa Restu</h3>
+            <form id="rsvpForm" class="space-y-4">
+                <input type="text" placeholder="Nama Lengkap" class="w-full bg-white border border-sage/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-sage transition-all shadow-inner" required>
+                <select class="w-full bg-white border border-sage/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-sage transition-all shadow-inner" required>
+                    <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                    <option value="hadir">Insyaallah Hadir</option>
+                    <option value="tidak">Tidak Dapat Hadir</option>
+                </select>
+                <textarea placeholder="Tulis doa restu Anda..." rows="3" class="w-full bg-white border border-sage/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-sage transition-all shadow-inner" required></textarea>
+                <button type="submit" class="w-full py-3 bg-gold hover:bg-goldLight text-cream font-title text-xs tracking-widest uppercase rounded shadow-md transition-all font-semibold">Kirim Doa</button>
+            </form>
+            <div id="guestbook" class="space-y-3 pt-2 max-h-60 overflow-y-auto scrollbar-hide"></div>
+        </section>
 
-            <footer class="text-center text-paper/60 text-sm mt-20"><p>Dibuat dengan ❤️ untuk Rivo & Vanisa</p><p class="mt-2">Tema: Istana Tak Terbatas • Demon Slayer</p></footer>
-        </div>
+        <footer class="text-center text-sageLight text-xs pt-8 space-y-1">
+            <p>Hatur Nuhun / Terima Kasih</p>
+            <p class="font-title text-[10px] tracking-widest uppercase text-gold font-bold">Rivo & Vanisa</p>
+        </footer>
+
     </main>
 
     <script>
-        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loading').style.display = 'none'; document.getElementById('entrance').classList.remove('hidden'); }, 1500); });
-
         const openBtn = document.getElementById('openBtn');
-        const doorLeft = document.getElementById('doorLeft');
-        const doorRight = document.getElementById('doorRight');
+        const coverPage = document.getElementById('coverPage');
         const mainContent = document.getElementById('mainContent');
-        const biwaSound = document.getElementById('biwaSound');
-        const ambientSound = document.getElementById('ambientSound');
+        const sundaMusic = document.getElementById('sundaMusic');
 
         openBtn.addEventListener('click', () => {
-            biwaSound.play(); ambientSound.muted = false; ambientSound.play();
-            doorLeft.style.animation = 'doorOpen 2s forwards ease-out';
-            doorRight.style.animation = 'doorOpenRight 2s forwards ease-out';
-            setTimeout(() => { document.getElementById('entrance').style.display = 'none'; mainContent.classList.remove('opacity-0'); mainContent.classList.add('opacity-100'); }, 2000);
+            // Putar musik instrumen
+            sundaMusic.play().catch(e => console.log("Audio play blocked"));
+            
+            // Sembunyikan cover dengan efek transisi halus
+            coverPage.style.opacity = '0';
+            coverPage.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                coverPage.style.display = 'none';
+                mainContent.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1000);
         });
 
+        // Hitung Mundur Pernikahan
         const weddingDate = new Date('2026-12-27T07:00:00').getTime();
         const countdownTimer = setInterval(() => {
-            const now = new Date().getTime(); const distance = weddingDate - now;
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
             document.getElementById('days').innerText = String(days).padStart(2, '0');
             document.getElementById('hours').innerText = String(hours).padStart(2, '0');
             document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
             document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-            if (distance < 0) { clearInterval(countdownTimer); document.getElementById('countdown').innerHTML = "<span class='text-2xl text-gold'>Hari Bahagia Telah Tiba!</span>"; }
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = "<span class='text-xs text-gold font-bold uppercase tracking-wider'>Hari Bahagia Telah Tiba!</span>";
+            }
         }, 1000);
 
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('[data-section]'); const scrollY = window.pageYOffset;
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const rotateX = (rect.top - window.innerHeight) / 50; const rotateY = scrollY / 200;
-                    section.style.transform = `perspective(1000px) rotateX(${rotateX * 0.1}deg) rotateY(${rotateY * 0.1}deg)`;
-                }
-            });
-            document.querySelector('.bg-parallax').style.backgroundPositionY = `${scrollY * 0.5}px`;
-        });
-
-        const form = document.getElementById('rsvpForm'); const guestbook = document.getElementById('guestbook');
+        // RSVP Guestbook
+        const form = document.getElementById('rsvpForm');
+        const guestbook = document.getElementById('guestbook');
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); const name = form.querySelector('input').value; const message = form.querySelector('textarea').value;
-            if(name && message) {
-                const entry = document.createElement('div');
-                entry.className = 'bg-wood/70 border border-gold/30 p-5 rounded shadow-glow transform transition-all duration-700 opacity-0 translate-y-10';
-                entry.style.animation = 'float 7s infinite ease-in-out';
-                entry.innerHTML = `<h4 class="font-shoji text-gold mb-2">${name}</h4><p class="text-paper/90 italic">${message}</p>`;
-                guestbook.prepend(entry); setTimeout(() => { entry.classList.remove('opacity-0', 'translate-y-10'); entry.classList.add('opacity-100', 'translate-y-0'); }, 100);
-                form.reset();
-            }
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 5; const y = (e.clientY / window.innerHeight - 0.5) * 5;
-            document.body.style.transform = `perspective(1000px) rotateX(${-y * 0.2}deg) rotateY(${x * 0.2}deg)`;
-        });
-    </script>
-</body>
-</html>
-            }
-            .perspective-1000 {
-                perspective: 1000px;
-            }
-            .preserve-3d {
-                transform-style: preserve-3d;
-            }
-            .ink-text {
-                position: relative;
-                overflow: hidden;
-            }
-            .ink-text span {
-                display: inline-block;
-                animation: inkBleed 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-                opacity: 0;
-                filter: blur(4px);
-                transform: translateY(10px);
-            }
-            .scrollbar-hide {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            .scrollbar-hide::-webkit-scrollbar {
-                display: none;
-            }
-        }
-
-        @keyframes inkBleed {
-            0% { opacity: 0; filter: blur(4px); transform: translateY(10px) scale(0.98); }
-            50% { opacity: 0.6; filter: blur(2px); }
-            100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
-        }
-
-        @keyframes castleShift {
-            0% { transform: rotateX(1deg) rotateY(-1deg); }
-            100% { transform: rotateX(-1deg) rotateY(1deg); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0.5deg); }
-            50% { transform: translateY(-12px) rotate(-0.5deg); }
-            100% { transform: translateY(0px) rotate(0.5deg); }
-        }
-
-        @keyframes pulseGold {
-            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.7), 0 0 40px rgba(212, 175, 55, 0.2); }
-        }
-
-        @keyframes doorOpen {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); opacity: 0; visibility: hidden; }
-        }
-
-        @keyframes doorOpenRight {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(100%); opacity: 0; visibility: hidden; }
-        }
-
-        body {
-            background: linear-gradient(135deg, #1A1410 0%, #0F0E0D 100%);
-            overflow-x: hidden;
-        }
-
-        .bg-parallax {
-            background-image: 
-                linear-gradient(rgba(26, 20, 16, 0.85), rgba(15, 14, 13, 0.85)),
-                url('https://images.unsplash.com/photo-1542281286-9e0a16bb7367ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-        }
-
-        .wood-pattern {
-            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 50 Q25 40 50 50 T100 50" stroke="%232B221C" stroke-width="0.5" fill="none"/%3E%3Cpath d="M0 30 Q25 20 50 30 T100 30" stroke="%232B221C" stroke-width="0.5" fill="none"/%3E%3Cpath d="M0 70 Q25 60 50 70 T100 70" stroke="%232B221C" stroke-width="0.5" fill="none"/%3E%3C/svg%3E');
-        }
-    </style>
-</head>
-<body class="text-paper font-serif scrollbar-hide">
-    <audio id="biwaSound" src="https://assets.mixkit.co/sfx/preview/mixkit-japanese-shakuhachi-flute-sound-1462.mp3" preload="auto">
-    <audio id="ambientSound" src="https://assets.mixkit.co/sfx/preview/mixkit-forest-wind-ambience-1461.mp3" preload="auto" loop muted>
-
-    <div id="loading" class="fixed inset-0 bg-darker z-[100] flex items-center justify-center">
-        <div class="text-center">
-            <div class="w-20 h-20 border-2 border-gold/30 border-t-gold rounded-full animate-spin mb-6 mx-auto"></div>
-            <p class="font-shoji text-gold text-lg">Memasuki Istana Tak Terbatas...</p>
-        </div>
-    </div>
-
-    <section id="entrance" class="fixed inset-0 z-50 perspective-1000 preserve-3d hidden">
-        <div class="absolute w-1/2 h-full left-0 bg-wood wood-pattern border-r-2 border-gold/20 transition-all duration-[2000ms] ease-out" id="doorLeft">
-            <div class="absolute inset-0 flex items-center justify-center"><div class="w-3/4 h-4/5 border-2 border-gold/10 rounded"></div></div>
-        </div>
-        <div class="absolute w-1/2 h-full right-0 bg-wood wood-pattern border-l-2 border-gold/20 transition-all duration-[2000ms] ease-out" id="doorRight">
-            <div class="absolute inset-0 flex items-center justify-center"><div class="w-3/4 h-4/5 border-2 border-gold/10 rounded"></div></div>
-        </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
-            <h1 class="font-shoji text-[clamp(2rem,5vw,4rem)] text-gold mb-4 drop-shadow-glow">UNDANGAN</h1>
-            <h2 class="font-shoji text-[clamp(1.2rem,3vw,2rem)] text-paper/90 mb-10">Pernikahan</h2>
-            <button id="openBtn" class="px-10 py-4 bg-wood/80 border-2 border-gold/50 text-gold font-shoji rounded-sm hover:border-gold hover:shadow-glow transition-all duration-300 transform hover:scale-105 active:scale-95">BUKA UNDANGAN</button>
-        </div>
-    </section>
-
-    <main id="mainContent" class="relative z-40 opacity-0 transition-opacity duration-1000 bg-parallax">
-        <div class="container mx-auto px-4 py-20 max-w-4xl">
+            e.preventDefault();
+            const name = form.querySelector('input').value;
+            const message = form.querySelector('textarea').value;
             
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]" style="animation: castleShift 15s infinite alternate ease-in-out;">
-                    <h3 class="ink-text text-center text-2xl md:text-3xl font-semibold mb-8 text-paper/90"><span style="animation-delay: 0.2s;">Yth. Bapak/Ibu/Teman Tercinta</span></h3>
-                    <p class="ink-text text-center text-lg md:text-xl leading-relaxed"><span style="animation-delay: 0.6s;">Dengan penuh rasa syukur dan kebahagiaan yang mendalam, kami mengundang Anda untuk hadir dan meramaikan hari bahagia pernikahan kami. Di bawah naungan kasih sayang Tuhan Yang Maha Esa, kami bersiap menyatukan hati dan hidup dalam ikatan pernikahan.</span></p>
-                </div>
-            </section>
-
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="grid md:grid-cols-2 gap-8 w-full">
-                    <div class="bg-dark/60 backdrop-blur-sm p-8 rounded-lg border border-blood/30 shadow-glow-red text-center transform hover:scale-[1.02] transition-all duration-500" style="animation: float 8s infinite ease-in-out;">
-                        <h2 class="font-shoji text-[clamp(2.5rem,6vw,4rem)] text-gold mb-3 drop-shadow-glow">RIVO</h2>
-                        <p class="text-paper/80 text-lg">Putra dari</p>
-                        <p class="text-paper font-semibold text-lg">ALM. Bapak Firmansyah & Ibu Susan</p>
-                    </div>
-                    <div class="bg-dark/60 backdrop-blur-sm p-8 rounded-lg border border-blood/30 shadow-glow-red text-center transform hover:scale-[1.02] transition-all duration-500" style="animation: float 8s infinite ease-in-out; animation-delay: 2s;">
-                        <h2 class="font-shoji text-[clamp(2.5rem,6vw,4rem)] text-gold mb-3 drop-shadow-glow">VANISA</h2>
-                        <p class="text-paper/80 text-lg">Putri dari</p>
-                        <p class="text-paper font-semibold text-lg">Bapak Deni & Ibu Nurjanah</p>
-                    </div>
-                </div>
-                <div class="my-10 text-center text-gold text-4xl">⚔️ ❤️ ⚔️</div>
-            </section>
-
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                    <h3 class="font-shoji text-center text-3xl md:text-4xl text-gold mb-12 drop-shadow-glow">Hari & Waktu</h3>
-                    <div class="text-center mb-10"><p class="text-2xl md:text-3xl font-semibold text-paper">Minggu, 27 Desember 2026</p></div>
-                    <div class="space-y-6 mb-16">
-                        <div class="flex justify-between items-center border-b border-gold/10 py-4"><span class="text-xl text-paper/80">Akad Nikah</span><span class="text-xl font-semibold text-paper">07.00 – 10.00 WIB</span></div>
-                        <div class="flex justify-between items-center border-b border-gold/10 py-4"><span class="text-xl text-paper/80">Resepsi</span><span class="text-xl font-semibold text-paper">10.00 – 15.00 WIB</span></div>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="text-lg text-gold/80 mb-4">Menuju Hari Bahagia</h4>
-                        <div id="countdown" class="flex justify-center gap-3 md:gap-6">
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="days">00</span><span class="text-xs text-paper/70">Hari</span></div>
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="hours">00</span><span class="text-xs text-paper/70">Jam</span></div>
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="minutes">00</span><span class="text-xs text-paper/70">Menit</span></div>
-                            <div class="bg-wood/80 w-20 h-20 md:w-24 md:h-24 rounded flex flex-col items-center justify-center border border-gold/30 shadow-glow"><span class="text-3xl md:text-4xl font-bold text-gold" id="seconds">00</span><span class="text-xs text-paper/70">Detik</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="min-h-[80vh] flex flex-col items-center justify-center mb-32 perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)] text-center">
-                    <h3 class="font-shoji text-3xl md:text-4xl text-gold mb-8 drop-shadow-glow">Lokasi Acara</h3>
-                    <p class="text-xl md:text-2xl mb-8 text-paper">Kampung Pasirwangi Garogol, Kec. Cibungbulang, Kab. Bogor</p>
-                    <a href="https://www.google.com/maps/search/Kampung+Pasirwangi+Garogol,+Kec.+Cibungbulang,+Kab.+Bogor" target="_blank" class="inline-block px-8 py-4 bg-wood border-2 border-gold/50 text-gold rounded-sm hover:border-gold hover:shadow-glow transition-all duration-300 transform hover:scale-105">📍 Buka Google Maps</a>
-                </div>
-            </section>
-
-            <section class="min-h-[80vh] flex flex-col items-center justify-center perspective-1000 preserve-3d" data-section>
-                <div class="bg-dark/60 backdrop-blur-sm p-10 md:p-16 rounded-lg border border-gold/20 w-full shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                    <h3 class="font-shoji text-center text-3xl text-gold mb-10 drop-shadow-glow">Ucapan & Konfirmasi</h3>
-                    <form id="rsvpForm" class="mb-16 space-y-5 max-w-md mx-auto">
-                        <div><input type="text" placeholder="Nama Lengkap" class="w-full bg-wood/50 border border-gold/20 rounded-sm px-4 py-3 text-paper focus:outline-none focus:border-gold focus:shadow-glow transition-all"></div>
-                        <div><select class="w-full bg-wood/50 border border-gold/20 rounded-sm px-4 py-3 text-paper focus:outline-none focus:border-gold focus:shadow-glow transition-all"><option value="" disabled selected>Konfirmasi Kehadiran</option><option value="hadir">Insyaallah Hadir</option><option value="ragu">Belum Pasti</option><option value="tidak">Tidak Dapat Hadir</option></select></div>
-                        <div><textarea placeholder="Tulis ucapan & doa restu..." rows="4" class="w-full bg-wood/50 border border-gold/20 rounded-sm px-4 py-3 text-paper focus:outline-none focus:border-gold focus:shadow-glow transition-all"></textarea></div>
-                        <button type="submit" class="w-full py-3 bg-gold/90 text-darker font-semibold rounded-sm hover:bg-gold shadow-glow transition-all transform hover:scale-[1.02] active:scale-95">Kirim Ucapan</button>
-                    </form>
-                    <div id="guestbook" class="grid md:grid-cols-2 gap-6"></div>
-                </div>
-            </section>
-
-            <footer class="text-center text-paper/60 text-sm mt-20"><p>Dibuat dengan ❤️ untuk Rivo & Vanisa</p><p class="mt-2">Tema: Istana Tak Terbatas • Demon Slayer</p></footer>
-        </div>
-    </main>
-
-    <script>
-        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loading').style.display = 'none'; document.getElementById('entrance').classList.remove('hidden'); }, 1500); });
-
-        const openBtn = document.getElementById('openBtn');
-        const doorLeft = document.getElementById('doorLeft');
-        const doorRight = document.getElementById('doorRight');
-        const mainContent = document.getElementById('mainContent');
-        const biwaSound = document.getElementById('biwaSound');
-        const ambientSound = document.getElementById('ambientSound');
-
-        openBtn.addEventListener('click', () => {
-            biwaSound.play(); ambientSound.muted = false; ambientSound.play();
-            doorLeft.style.animation = 'doorOpen 2s forwards ease-out';
-            doorRight.style.animation = 'doorOpenRight 2s forwards ease-out';
-            setTimeout(() => { document.getElementById('entrance').style.display = 'none'; mainContent.classList.remove('opacity-0'); mainContent.classList.add('opacity-100'); }, 2000);
-        });
-
-        const weddingDate = new Date('2026-12-27T07:00:00').getTime();
-        const countdownTimer = setInterval(() => {
-            const now = new Date().getTime(); const distance = weddingDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours).innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-            if (distance < 0) { clearInterval(countdownTimer); document.getElementById('countdown').innerHTML = "<span class='text-2xl text-gold'>Hari Bahagia Telah Tiba!</span>"; }
-        }, 1000);
-
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('[data-section]'); const scrollY = window.pageYOffset;
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const rotateX = (rect.top - window.innerHeight) / 50; const rotateY = scrollY / 200;
-                    section.style.transform = `perspective(1000px) rotateX(${rotateX * 0.1}deg) rotateY(${rotateY * 0.1}deg)`;
-                }
-            });
-            document.querySelector('.bg-parallax').style.backgroundPositionY = `${scrollY * 0.5}px`;
-        });
-
-        const form = document.getElementById('rsvpForm'); const guestbook = document.getElementById('guestbook');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); const name = form.querySelector('input').value; const message = form.querySelector('textarea').value;
             if(name && message) {
                 const entry = document.createElement('div');
-                entry.className = 'bg-wood/70 border border-gold/30 p-5 rounded shadow-glow transform transition-all duration-700 opacity-0 translate-y-10';
-                entry.style.animation = 'float 7s infinite ease-in-out';
-                entry.innerHTML = `<h4 class="font-shoji text-gold mb-2">${name}</h4><p class="text-paper/90 italic">${message}</p>`;
-                guestbook.prepend(entry); setTimeout(() => { entry.classList.remove('opacity-0', 'translate-y-10'); entry.classList.add('opacity-100', 'translate-y-0'); }, 100);
+                entry.className = 'bg-white/80 p-4 rounded-lg border border-sage/10 shadow-sm text-xs space-y-1';
+                entry.innerHTML = `<h4 class="font-bold text-sage">${name}</h4><p class="text-charcoal/80 italic">"${message}"</p>`;
+                guestbook.prepend(entry);
                 form.reset();
             }
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 5; const y = (e.clientY / window.innerHeight - 0.5) * 5;
-            document.body.style.transform = `perspective(1000px) rotateX(${-y * 0.2}deg) rotateY(${x * 0.2}deg)`;
         });
     </script>
 </body>
