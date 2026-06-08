@@ -11,13 +11,13 @@
             theme: {
                 extend: {
                     colors: {
-                        sage: '#4A5D4E',
-                        sageLight: '#6B8270',
-                        sageWarm: '#F0F4F1',
+                        ocean: '#1A4D6B',
+                        oceanLight: '#347B9B',
+                        oceanWarm: '#EBF3F7',
                         gold: '#C5A059',
                         goldLight: '#E5C483',
-                        cream: '#F9F6F0',
-                        charcoal: '#2C302E'
+                        cream: '#F4F7F9',
+                        charcoal: '#1E252B'
                     },
                     fontFamily: {
                         script: ['Great Vibes', 'cursive'],
@@ -34,130 +34,144 @@
             .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         }
         body {
-            background-color: #F9F6F0;
-            color: #2C302E;
+            background-color: #F4F7F9;
+            color: #1E252B;
         }
-        .bg-batik {
-            background-image: linear-gradient(rgba(249, 246, 240, 0.92), rgba(249, 246, 240, 0.92)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');
+        .bg-wave {
+            background-image: linear-gradient(rgba(244, 247, 249, 0.94), rgba(244, 247, 249, 0.94)), url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-attachment: fixed;
         }
         @keyframes pulseGold {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.6; }
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.05); opacity: 0.7; }
         }
-        .leaf-animation {
+        .wave-animation {
             animation: pulseGold 4s infinite ease-in-out;
         }
     </style>
 </head>
-<body class="font-sans scrollbar-hide antialiased bg-batik">
+<body class="font-sans scrollbar-hide antialiased bg-wave">
 
+    <!-- Musik Latar (Kecapi Suling / Instrumen Menenangkan) -->
     <audio id="sundaMusic" src="https://assets.mixkit.co/sfx/preview/mixkit-relaxing-green-nature-loop-3142.mp3" preload="auto" loop></audio>
 
-    <section id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between py-16 px-6 bg-cream text-center transition-all duration-1000 ease-in-out border-8 border-sage m-2 md:m-4 rounded-lg shadow-2xl">
-        <div class="text-sage font-title tracking-[0.2em] text-xs md:text-sm uppercase mt-4">Walimatul 'Ursy</div>
+    <!-- Halaman Cover Depan -->
+    <section id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between py-16 px-6 bg-cream text-center transition-all duration-1000 ease-in-out border-8 border-ocean m-2 md:m-4 rounded-lg shadow-2xl">
+        <div class="text-ocean font-title tracking-[0.2em] text-xs md:text-sm uppercase mt-4">Walimatul 'Ursy</div>
         
         <div class="my-auto space-y-4">
-            <div class="text-gold text-4xl mb-2 leaf-animation">🌿</div>
-            <h1 class="font-title text-sage text-2xl md:text-3xl tracking-wide">The Wedding Of</h1>
+            <!-- Dekorasi Kerang/Gelombang Estetik -->
+            <div class="text-gold text-4xl mb-2 wave-animation">🌊</div>
+            <h1 class="font-title text-ocean text-2xl md:text-3xl tracking-wide">The Wedding Of</h1>
             <div class="font-script text-gold text-6xl md:text-7xl my-6 leading-relaxed">Rivo & Vanisa</div>
             <div class="w-24 h-[1px] bg-gold mx-auto my-4"></div>
-            <p class="text-sageLight text-sm tracking-widest font-medium uppercase">Minggu, 27 Desember 2026</p>
+            <p class="text-oceanLight text-sm tracking-widest font-medium uppercase">Minggu, 27 Desember 2026</p>
         </div>
 
         <div class="space-y-4 w-full max-w-sm mb-4">
             <p class="text-charcoal/70 text-xs tracking-wider">Kepada Bapak/Ibu/Saudara/i:</p>
-            <div class="bg-sageWarm border border-sage/20 py-3 px-4 rounded-md text-sage font-semibold shadow-sm text-sm">Tamu Undangan Spesial</div>
-            <button id="openBtn" class="w-full py-3.5 bg-sage hover:bg-sageLight text-cream font-title text-xs tracking-[0.2em] rounded shadow-md transition-all duration-300 transform active:scale-95 border border-gold/30">
+            <div class="bg-oceanWarm border border-ocean/20 py-3 px-4 rounded-md text-ocean font-semibold shadow-sm text-sm">Tamu Undangan Spesial</div>
+            <button id="openBtn" class="w-full py-3.5 bg-ocean hover:bg-oceanLight text-cream font-title text-xs tracking-[0.2em] rounded shadow-md transition-all duration-300 transform active:scale-95 border border-gold/30">
                 BUKA UNDANGAN ✨
             </button>
         </div>
     </section>
 
+    <!-- Konten Utama Undangan -->
     <main id="mainContent" class="relative z-40 hidden max-w-xl mx-auto px-4 py-12 space-y-12">
         
-        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-sage/10 text-center shadow-xl space-y-4">
+        <!-- Pembuka -->
+        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-ocean/10 text-center shadow-xl space-y-4">
             <div class="text-gold text-2xl">🕊️</div>
-            <h2 class="font-title text-sage text-lg tracking-wide">Sampurasun / Assalamu’alaikum Wr. Wb.</h2>
+            <h2 class="font-title text-ocean text-lg tracking-wide">Sampurasun / Assalamu’alaikum Wr. Wb.</h2>
             <p class="text-xs md:text-sm leading-relaxed text-charcoal/80 font-light">
                 Maha Suci Allah SWT yang telah menciptakan makhluk-Nya berpasang-pasangan. Dengan memohon rahmat dan rida-Nya, kami bermaksud menyelenggarakan syukuran pernikahan putra-putri kami:
             </p>
         </section>
 
+        <!-- Profil Pengantin -->
         <section class="space-y-6">
-            <div class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-l-4 border-sage shadow-xl text-center">
+            <!-- Pengantin Pria -->
+            <div class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-l-4 border-ocean shadow-xl text-center">
                 <div class="font-script text-gold text-5xl mb-2">Rivo</div>
-                <h3 class="font-title text-sage text-base tracking-widest font-bold uppercase mb-3">Rivo Agustiansyah</h3>
+                <h3 class="font-title text-ocean text-base tracking-widest font-bold uppercase mb-3">Rivo Agustiansyah</h3>
                 <p class="text-xs text-charcoal/70">Putra Kedua dari:</p>
                 <p class="text-sm font-medium text-charcoal">ALM. Bapak Firmansyah & Ibu Susan</p>
             </div>
 
+            <!-- Simbol Cinta -->
             <div class="text-center text-gold text-2xl my-2 animate-bounce">❤️</div>
 
-            <div class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-r-4 border-sage shadow-xl text-center">
+            <!-- Pengantin Wanita -->
+            <div class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border-r-4 border-ocean shadow-xl text-center">
                 <div class="font-script text-gold text-5xl mb-2">Vanisa</div>
-                <h3 class="font-title text-sage text-base tracking-widest font-bold uppercase mb-3">Vanisa</h3>
+                <h3 class="font-title text-ocean text-base tracking-widest font-bold uppercase mb-3">Vanisa</h3>
                 <p class="text-xs text-charcoal/70">Putri Pertama dari:</p>
-                <p class="text-sm font-medium text-charcoal">Bapak Deni & Ibu Nurjanah</p>
+                <p class="text-sm font-medium text-charcoal">Bapak Deni & Ibu Nur</p>
             </div>
         </section>
 
-        <section class="bg-sage text-cream p-8 rounded-2xl shadow-xl text-center space-y-6 border border-gold/20">
+        <!-- Acara & Waktu -->
+        <section class="bg-ocean text-cream p-8 rounded-2xl shadow-xl text-center space-y-6 border border-gold/20">
             <h3 class="font-title text-goldLight text-xl tracking-widest uppercase">Waktu & Tempat Acara</h3>
             <div class="w-12 h-[1px] bg-goldLight mx-auto"></div>
             
             <p class="font-title tracking-wide text-sm text-cream/90">Minggu, 27 Desember 2026</p>
             
             <div class="grid grid-cols-2 gap-4 pt-2">
-                <div class="bg-sageLight/40 p-4 rounded-lg border border-cream/10">
+                <div class="bg-oceanLight/40 p-4 rounded-lg border border-cream/10">
                     <h4 class="font-title text-xs tracking-wider text-goldLight font-bold uppercase mb-1">Akad Nikah</h4>
                     <p class="text-xs text-cream/80">07.00 - 10.00 WIB</p>
                 </div>
-                <div class="bg-sageLight/40 p-4 rounded-lg border border-cream/10">
+                <div class="bg-oceanLight/40 p-4 rounded-lg border border-cream/10">
                     <h4 class="font-title text-xs tracking-wider text-goldLight font-bold uppercase mb-1">Resepsi</h4>
                     <p class="text-xs text-cream/80">10.00 - 15.00 WIB</p>
                 </div>
             </div>
 
+            <!-- Countdown -->
             <div class="pt-4">
                 <p class="text-xs tracking-widest uppercase text-goldLight mb-3">Hitung Mundur Hari Bahagia</p>
                 <div id="countdown" class="flex justify-center gap-4 text-charcoal">
-                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="days" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Hari</span></div>
-                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="hours" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Jam</span></div>
-                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="minutes" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Mnt</span></div>
-                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="seconds" class="font-bold text-base block text-sage">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Det</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="days" class="font-bold text-base block text-ocean">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Hari</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="hours" class="font-bold text-base block text-ocean">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Jam</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="minutes" class="font-bold text-base block text-ocean">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Mnt</span></div>
+                    <div class="bg-cream px-3 py-2 rounded shadow-md min-w-[50px]"><span id="seconds" class="font-bold text-base block text-ocean">00</span><span class="text-[9px] uppercase tracking-wider text-charcoal/60">Det</span></div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-sage/10 text-center shadow-xl space-y-4">
-            <h3 class="font-title text-sage text-lg tracking-wider uppercase">Lokasi Pernikahan</h3>
+        <!-- Lokasi Maps Garut -->
+        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-ocean/10 text-center shadow-xl space-y-4">
+            <h3 class="font-title text-ocean text-lg tracking-wider uppercase">Lokasi Pernikahan</h3>
             <p class="text-sm font-medium text-charcoal">Kampung Pasirwangi Garogol</p>
-            <p class="text-xs text-charcoal/70 leading-relaxed">Kec. Cibungbulang, Kab. Bogor, Jawa Barat</p>
+            <p class="text-xs text-charcoal/70 leading-relaxed">Kec. Tarogong Kaler, Kab. Garut, Jawa Barat</p>
             <div class="pt-2">
-                <a href="https://maps.google.com" target="_blank" class="inline-block px-6 py-3 bg-sage hover:bg-sageLight text-cream text-xs font-title tracking-widest uppercase rounded shadow-md transition-all">
+                <a href="https://www.google.com/maps/search/Pasirwangi+Garut" target="_blank" class="inline-block px-6 py-3 bg-ocean hover:bg-oceanLight text-cream text-xs font-title tracking-widest uppercase rounded shadow-md transition-all">
                     📍 Buka Google Maps
                 </a>
             </div>
         </section>
 
-        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-sage/10 shadow-xl space-y-6">
-            <h3 class="font-title text-center text-sage text-lg tracking-wider uppercase">Ucapan & Doa Restu</h3>
+        <!-- RSVP & Ucapan -->
+        <section class="bg-cream/90 backdrop-blur-md p-8 rounded-2xl border border-ocean/10 shadow-xl space-y-6">
+            <h3 class="font-title text-center text-ocean text-lg tracking-wider uppercase">Ucapan & Doa Restu</h3>
             <form id="rsvpForm" class="space-y-4">
-                <input type="text" placeholder="Nama Lengkap" class="w-full bg-white border border-sage/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-sage transition-all shadow-inner" required>
-                <select class="w-full bg-white border border-sage/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-sage transition-all shadow-inner" required>
+                <input type="text" placeholder="Nama Lengkap" class="w-full bg-white border border-ocean/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-ocean transition-all shadow-inner" required>
+                <select class="w-full bg-white border border-ocean/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-ocean transition-all shadow-inner" required>
                     <option value="" disabled selected>Konfirmasi Kehadiran</option>
                     <option value="hadir">Insyaallah Hadir</option>
                     <option value="tidak">Tidak Dapat Hadir</option>
                 </select>
-                <textarea placeholder="Tulis doa restu Anda..." rows="3" class="w-full bg-white border border-sage/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-sage transition-all shadow-inner" required></textarea>
+                <textarea placeholder="Tulis doa restu Anda..." rows="3" class="w-full bg-white border border-ocean/20 rounded px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:border-ocean transition-all shadow-inner" required></textarea>
                 <button type="submit" class="w-full py-3 bg-gold hover:bg-goldLight text-cream font-title text-xs tracking-widest uppercase rounded shadow-md transition-all font-semibold">Kirim Doa</button>
             </form>
             <div id="guestbook" class="space-y-3 pt-2 max-h-60 overflow-y-auto scrollbar-hide"></div>
         </section>
 
-        <footer class="text-center text-sageLight text-xs pt-8 space-y-1">
+        <!-- Footer -->
+        <footer class="text-center text-oceanLight text-xs pt-8 space-y-1">
             <p>Hatur Nuhun / Terima Kasih</p>
             <p class="font-title text-[10px] tracking-widest uppercase text-gold font-bold">Rivo & Vanisa</p>
         </footer>
@@ -171,10 +185,8 @@
         const sundaMusic = document.getElementById('sundaMusic');
 
         openBtn.addEventListener('click', () => {
-            // Putar musik instrumen
             sundaMusic.play().catch(e => console.log("Audio play blocked"));
             
-            // Sembunyikan cover dengan efek transisi halus
             coverPage.style.opacity = '0';
             coverPage.style.transform = 'scale(0.95)';
             
@@ -185,7 +197,7 @@
             }, 1000);
         });
 
-        // Hitung Mundur Pernikahan
+        // Hitung Mundur
         const weddingDate = new Date('2026-12-27T07:00:00').getTime();
         const countdownTimer = setInterval(() => {
             const now = new Date().getTime();
@@ -207,7 +219,7 @@
             }
         }, 1000);
 
-        // RSVP Guestbook
+        // RSVP
         const form = document.getElementById('rsvpForm');
         const guestbook = document.getElementById('guestbook');
         form.addEventListener('submit', (e) => {
@@ -217,8 +229,8 @@
             
             if(name && message) {
                 const entry = document.createElement('div');
-                entry.className = 'bg-white/80 p-4 rounded-lg border border-sage/10 shadow-sm text-xs space-y-1';
-                entry.innerHTML = `<h4 class="font-bold text-sage">${name}</h4><p class="text-charcoal/80 italic">"${message}"</p>`;
+                entry.className = 'bg-white/80 p-4 rounded-lg border border-ocean/10 shadow-sm text-xs space-y-1';
+                entry.innerHTML = `<h4 class="font-bold text-ocean">${name}</h4><p class="text-charcoal/80 italic">"${message}"</p>`;
                 guestbook.prepend(entry);
                 form.reset();
             }
