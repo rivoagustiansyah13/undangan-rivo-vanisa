@@ -3,64 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Sunda Elegan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        emerald: '#064e3b', // Emerald Green utama
-                        burgundy: '#881337', // Aksen Burgundy
-                        cream: '#fefcf6'      // Warna latar lembut
-                    }
-                }
-            }
-        }
-    </script>
+    <title>6 Years with You - Vanisa & Rivo</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Three.js untuk Efek 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        body { background-color: #fefcf6; font-family: 'serif'; }
-        .sunda-border { border: 2px solid #064e3b; padding: 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: #050001; /* Hitam pekat */
+            color: #ffffff;
+            user-select: none;
+        }
+
+        /* Canvas 3D Latar Belakang */
+        #canvas-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* LAYAR 1: Halaman Utama (Hati Besar) */
+        #screen-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, transparent 30%, #050001 90%);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+            cursor: pointer;
+        }
+
+        #screen-1 h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: #990011; /* Merah maroon mendalam */
+            text-shadow: 0 0 20px rgba(153, 0, 17, 0.4);
+            animation: pulseText 3s infinite ease-in-out;
+        }
+
+        .instruction {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: #666;
+            text-transform: uppercase;
+            animation: blink 2s infinite;
+        }
+
+        /* LAYAR 2: Surat Cinta */
+        #screen-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(5, 0, 1, 0.85), rgba(20, 0, 4, 0.95));
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+            transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        #screen-2.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .card {
+            background: rgba(12, 2, 4, 0.85);
+            padding: 40px 25px;
+            border-radius: 24px;
+            border: 1px solid rgba(153, 0, 17, 0.3);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(153, 0, 17, 0.15);
+            max-width: 500px;
+            width: 100%;
+            backdrop-filter: blur(15px);
+            text-align: center;
+        }
+
+        .card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #b30016;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(179, 0, 22, 0.3);
+        }
+
+        .love-letter {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #e0d9de;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .love-letter p {
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #ff334b;
+            font-weight: 500;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.4rem;
+            color: #b30016;
+            margin-top: 30px;
+            text-shadow: 0 0 5px rgba(179, 0, 22, 0.3);
+        }
+
+        /* Animasi CSS */
+        @keyframes pulseText {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; text-shadow: 0 0 30px rgba(153, 0, 17, 0.6); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        @media (max-width: 480px) {
+            #screen-1 h1 { font-size: 2.6rem; }
+            .card { padding: 35px 20px; }
+            .love-letter { font-size: 0.95rem; }
+        }
     </style>
 </head>
-<body class="text-emerald">
+<body>
 
-    <!-- Cover Depan -->
-    <section id="cover" class="h-screen flex flex-col justify-center items-center p-6 text-center border-8 border-emerald m-4">
-        <p class="uppercase tracking-[0.3em] text-sm text-burgundy">Walimatul 'Ursy</p>
-        <h1 class="text-5xl font-bold my-6">Rivo & Vanisa</h1>
-        <p class="mb-8">Menuju Ikatan Suci</p>
-        <button onclick="bukaUndangan()" class="bg-emerald text-white px-8 py-3 rounded-full shadow-lg hover:bg-burgundy transition-all">
-            Buka Undangan
-        </button>
-    </section>
+    <!-- Canvas 3D untuk Hati Berdenyut -->
+    <canvas id="canvas-3d"></canvas>
 
-    <!-- Konten (Awalnya Hidden) -->
-    <main id="konten" class="hidden max-w-lg mx-auto p-6 space-y-12">
-        
-        <!-- Layer 2: Nama Wanita -->
-        <section class="text-center sunda-border shadow-2xl bg-white">
-            <h2 class="text-xs uppercase tracking-widest text-burgundy mb-2">Mempelai Wanita</h2>
-            <div class="w-24 h-24 mx-auto bg-emerald/10 rounded-full flex items-center justify-center mb-4">
-                <span class="text-emerald text-2xl">✨</span>
+    <!-- LAYAR 1: Tampilan Awal -->
+    <div id="screen-1" onclick="bukaSurat()">
+        <h1>Happy Anniversary Sayang</h1>
+        <div class="instruction">Sentuh hatinya...</div>
+    </div>
+
+    <!-- LAYAR 2: Surat Cinta Romantis -->
+    <div id="screen-2">
+        <div class="card">
+            <h2>6 Tahun yang Indah...</h2>
+            <div class="love-letter">
+                <p>Untuk bidadariku tercinta, <br><span class="highlight">Vanisa Mutiara Sapaati Dikri</span>.</p>
+                <p>Enam tahun berjalan beriringan bersamamu adalah takdir terindah yang amat aku syukuri. Seperti perpaduan warna merah yang mendalam dan hitamnya malam yang abadi, begitulah caraku mencintaimu: sebuah ketulusan yang kuat, tenang, dan tidak akan pernah pudar oleh waktu.</p>
+                <p>Terima kasih telah menjadi rumah tempatku pulang, menjadi pelukan paling hangat di kala dunia terasa melelahkan, dan selalu melengkapi setiap kurangku dengan kasih sayangmu.</p>
+                <p>Selamat hari jadi yang ke-6, Sayangku. Mari kita terus melangkah bersama, merajut lebih banyak bahagia dan menjaga rasa ini selamanya.</p>
+                <div class="signature">Dari Rivo yang mencintaimu</div>
             </div>
-            <h3 class="text-3xl font-bold">Vanisa Mutiara Sapaati</h3>
-            <p class="text-sm mt-2 italic text-emerald/70">Putri dari Bapak & Ibu</p>
-        </section>
-
-        <!-- Tambahan Elemen Sunda -->
-        <section class="text-center">
-            <p class="text-emerald/80 italic font-serif">
-                "Maha Suci Allah yang menciptakan makhluk-Nya berpasang-pasangan. Semoga pernikahan kami menjadi ibadah yang penuh berkah."
-            </p>
-        </section>
-
-    </main>
+        </div>
+    </div>
 
     <script>
-        function bukaUndangan() {
-            document.getElementById('cover').classList.add('hidden');
-            document.getElementById('konten').classList.remove('hidden');
+        // --- KODE 3D ACTION (THREE.JS) ---
+        const canvas = document.querySelector('#canvas-3d');
+        const scene = new THREE.Scene();
+        
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 6;
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Formasi Hati 3D
+        const particlesCount = 2200;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount; i++) {
+            const t = Math.PI * 2 * (i / particlesCount);
+            
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+            const z = (Math.random() - 0.5) * 8; 
+
+            positions[i * 3] = x * 0.16 + (Math.random() - 0.5) * 0.15;
+            positions[i * 3 + 1] = y * 0.16 + (Math.random() - 0.5) * 0.15;
+            positions[i * 3 + 2] = z * 0.1;
+
+            // Merah mawar tua pekat romantis
+            colors[i * 3] = 0.45 + Math.random() * 0.15; 
+            colors[i * 3 + 1] = 0.01;                   
+            colors[i * 3 + 2] = 0.04;                  
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.038,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.85,
+            blending: THREE.NormalBlending
+        });
+
+        const heartParticles = new THREE.Points(geometry, material);
+        scene.add(heartParticles);
+
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        function handleMove(x, y) {
+            mouseX = (x / window.innerWidth) - 0.5;
+            mouseY = (y / window.innerHeight) - 0.5;
+        }
+
+        window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) handleMove(e.touches[0].clientX, e.touches[0].clientY);
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const clock = new THREE.Clock();
+        let isZoomed = false;
+
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+
+            heartParticles.rotation.y = elapsedTime * 0.25 + (mouseX * 0.4);
+            heartParticles.rotation.x = Math.sin(elapsedTime * 0.15) * 0.1 + (mouseY * 0.4);
+
+            let pulseFactor = isZoomed ? 2.2 : 3.0; 
+            const pulse = (isZoomed ? 0.75 : 1.0) + Math.sin(elapsedTime * pulseFactor) * 0.04;
+            heartParticles.scale.set(pulse, pulse, pulse);
+
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        // Fungsi Transisi Layar
+        function bukaSurat() {
+            isZoomed = true;
+            const s1 = document.getElementById('screen-1');
+            s1.style.opacity = '0';
+            s1.style.transform = 'scale(1.1)';
+            setTimeout(() => s1.style.display = 'none', 1500);
+
+            document.getElementById('screen-2').classList.add('active');
         }
     </script>
 </body>
