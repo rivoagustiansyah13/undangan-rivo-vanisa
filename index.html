@@ -70,7 +70,7 @@
             animation: blink 2.5s infinite;
         }
 
-        /* LAYAR 2: Amplop & Surat Cinta */
+        /* LAYAR 2: Tampilan Surat (Bisa di-scroll jika kepotong) */
         #screen-2 {
             position: absolute;
             top: 0;
@@ -80,37 +80,38 @@
             z-index: 3;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-start; /* Mengizinkan scroll dari atas */
+            padding: 30px 20px;
             background: rgba(3, 0, 1, 0.85);
             opacity: 0;
             pointer-events: none;
-            transform: translateY(30px);
-            transition: all 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow-y: auto; /* PERBAIKAN: Mengaktifkan scroll vertikal */
+            -webkit-overflow-scrolling: touch;
+            transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         #screen-2.active {
             opacity: 1;
             pointer-events: auto;
-            transform: translateY(0);
         }
 
         /* Tampilan Bentuk Fisik Lembar Surat */
         .paper-letter {
             background: linear-gradient(135deg, #120205 0%, #1c0409 100%);
-            padding: 50px 35px;
+            padding: 40px 25px;
             width: 100%;
             max-width: 480px;
-            border-radius: 4px; /* Sudut tajam khas kertas murni */
+            margin: auto 0; /* Menjaga posisi tetap di tengah secara vertikal jika layar luas */
+            border-radius: 4px; 
             box-shadow: 
                 inset 0 0 30px rgba(0, 0, 0, 0.9),
                 0 0 40px rgba(0, 0, 0, 0.9), 
                 0 0 20px rgba(138, 3, 20, 0.15);
             position: relative;
-            border-left: 2px dashed rgba(138, 3, 20, 0.25); /* Garis tepi buku/surat lama */
+            border-left: 2px dashed rgba(138, 3, 20, 0.25); 
             border-right: 1px solid rgba(138, 3, 20, 0.1);
-            transform: rotate(-1deg); /* Sedikit miring estetis */
-            animation: unfold 1.5s ease-out forwards;
+            transform: rotate(-0.5deg);
+            animation: unfold 1.2s ease-out forwards;
         }
 
         /* Efek Garis Halus Kertas Surat */
@@ -125,25 +126,25 @@
 
         .paper-letter h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #b30016;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
             border-bottom: 1px solid rgba(138, 3, 20, 0.2);
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
 
         .love-text {
             font-size: 0.95rem;
-            line-height: 2.1; /* Jarak baris yang nyaman dibaca seperti coretan asli */
+            line-height: 1.9; /* Sedikit dirapatkan agar pas di HP */
             color: #d9cbd1;
             text-align: justify;
             font-weight: 300;
         }
 
         .love-text p {
-            margin-bottom: 20px;
-            text-indent: 30px; /* Paragraf menjorok ke dalam */
+            margin-bottom: 15px;
+            text-indent: 25px; 
         }
 
         .highlight-name {
@@ -153,13 +154,13 @@
         }
 
         .signature-block {
-            margin-top: 40px;
-            text-align: right; /* Tanda tangan di kanan bawah surat */
-            padding-right: 10px;
+            margin-top: 30px;
+            text-align: right; 
+            padding-right: 5px;
         }
 
         .signature-title {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #777;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -167,7 +168,7 @@
 
         .signature-name {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             color: #b30016;
             margin-top: 5px;
             text-shadow: 0 0 10px rgba(179, 0, 22, 0.2);
@@ -185,14 +186,14 @@
         }
 
         @keyframes unfold {
-            from { transform: scaleY(0.7) rotate(-3deg); opacity: 0; }
-            to { transform: scaleY(1) rotate(-1deg); opacity: 1; }
+            from { transform: scaleY(0.8) rotate(-2deg); opacity: 0; }
+            to { transform: scaleY(1) rotate(-0.5deg); opacity: 1; }
         }
 
         @media (max-width: 480px) {
             #screen-1 h1 { font-size: 2.8rem; }
-            .paper-letter { padding: 40px 25px; }
-            .love-text { font-size: 0.9rem; line-height: 1.9; }
+            .paper-letter { padding: 35px 20px; margin-top: 10px; margin-bottom: 10px; }
+            .love-text { font-size: 0.9rem; line-height: 1.8; }
         }
     </style>
 </head>
@@ -255,7 +256,6 @@
             positions[i * 3 + 1] = y * 0.16 + (Math.random() - 0.5) * 0.15;
             positions[i * 3 + 2] = z * 0.1;
 
-            // Merah beludru gelap (Deep Luxurious Crimson)
             colors[i * 3] = 0.38 + Math.random() * 0.15; 
             colors[i * 3 + 1] = 0.01;                   
             colors[i * 3 + 2] = 0.03;                  
@@ -275,7 +275,6 @@
         const heartParticles = new THREE.Points(geometry, material);
         scene.add(heartParticles);
 
-        // Kontrol Interaksi Rotasi Halus via Mouse / Sentuhan Jari
         let mouseX = 0;
         let mouseY = 0;
         
@@ -301,13 +300,11 @@
         const animate = () => {
             const elapsedTime = clock.getElapsedTime();
 
-            // Gerakan berputar konstan lembut + responsif kursor
             heartParticles.rotation.y = elapsedTime * 0.22 + (mouseX * 0.35);
             heartParticles.rotation.x = Math.sin(elapsedTime * 0.12) * 0.08 + (mouseY * 0.35);
 
-            // Detak Jantung Lambat Nyata
             let pulseFactor = isZoomed ? 2.0 : 3.2; 
-            const pulse = (isZoomed ? 0.8 : 1.0) + Math.sin(elapsedTime * pulseFactor) * 0.035;
+            const pulse = (isZoomed ? 0.75 : 1.0) + Math.sin(elapsedTime * pulseFactor) * 0.035;
             heartParticles.scale.set(pulse, pulse, pulse);
 
             renderer.render(scene, camera);
