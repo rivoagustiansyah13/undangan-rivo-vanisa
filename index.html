@@ -20,7 +20,7 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Poppins', sans-serif;
-            background-color: #050001; /* Hitam pekat */
+            background-color: #030001; /* Hitam pekat murni */
             color: #ffffff;
             user-select: none;
         }
@@ -35,7 +35,7 @@
             z-index: 1;
         }
 
-        /* LAYAR 1: Halaman Utama (Hati Besar) */
+        /* LAYAR 1: Tampilan Utama (Hati Besar) */
         #screen-1 {
             position: absolute;
             top: 0;
@@ -49,28 +49,28 @@
             align-items: center;
             padding: 60px 20px;
             text-align: center;
-            background: radial-gradient(circle at center, transparent 30%, #050001 90%);
+            background: radial-gradient(circle at center, transparent 20%, #030001 95%);
             transition: opacity 1.5s ease, transform 1.5s ease;
             cursor: pointer;
         }
 
         #screen-1 h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: #990011; /* Merah maroon mendalam */
-            text-shadow: 0 0 20px rgba(153, 0, 17, 0.4);
+            font-size: 3.5rem;
+            color: #8a0314; /* Merah mawar gelap mendalam */
+            text-shadow: 0 0 25px rgba(138, 3, 20, 0.5);
             animation: pulseText 3s infinite ease-in-out;
         }
 
         .instruction {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            color: #666;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: #555;
             text-transform: uppercase;
-            animation: blink 2s infinite;
+            animation: blink 2.5s infinite;
         }
 
-        /* LAYAR 2: Surat Cinta */
+        /* LAYAR 2: Amplop & Surat Cinta */
         #screen-2 {
             position: absolute;
             top: 0;
@@ -82,103 +82,146 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background: linear-gradient(to bottom, rgba(5, 0, 1, 0.85), rgba(20, 0, 4, 0.95));
+            background: rgba(3, 0, 1, 0.85);
             opacity: 0;
             pointer-events: none;
-            transform: scale(0.95);
-            transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(30px);
+            transition: all 1.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         #screen-2.active {
             opacity: 1;
             pointer-events: auto;
-            transform: scale(1);
+            transform: translateY(0);
         }
 
-        .card {
-            background: rgba(12, 2, 4, 0.85);
-            padding: 40px 25px;
-            border-radius: 24px;
-            border: 1px solid rgba(153, 0, 17, 0.3);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(153, 0, 17, 0.15);
-            max-width: 500px;
+        /* Tampilan Bentuk Fisik Lembar Surat */
+        .paper-letter {
+            background: linear-gradient(135deg, #120205 0%, #1c0409 100%);
+            padding: 50px 35px;
             width: 100%;
-            backdrop-filter: blur(15px);
-            text-align: center;
+            max-width: 480px;
+            border-radius: 4px; /* Sudut tajam khas kertas murni */
+            box-shadow: 
+                inset 0 0 30px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(0, 0, 0, 0.9), 
+                0 0 20px rgba(138, 3, 20, 0.15);
+            position: relative;
+            border-left: 2px dashed rgba(138, 3, 20, 0.25); /* Garis tepi buku/surat lama */
+            border-right: 1px solid rgba(138, 3, 20, 0.1);
+            transform: rotate(-1deg); /* Sedikit miring estetis */
+            animation: unfold 1.5s ease-out forwards;
         }
 
-        .card h2 {
+        /* Efek Garis Halus Kertas Surat */
+        .paper-letter::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.005) 96%, rgba(138, 3, 20, 0.04) 100%);
+            background-size: 100% 30px;
+            pointer-events: none;
+        }
+
+        .paper-letter h2 {
             font-family: 'Great Vibes', cursive;
             font-size: 2.8rem;
             color: #b30016;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(179, 0, 22, 0.3);
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(138, 3, 20, 0.2);
+            padding-bottom: 15px;
         }
 
-        .love-letter {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #e0d9de;
-            text-align: center;
+        .love-text {
+            font-size: 0.95rem;
+            line-height: 2.1; /* Jarak baris yang nyaman dibaca seperti coretan asli */
+            color: #d9cbd1;
+            text-align: justify;
             font-weight: 300;
         }
 
-        .love-letter p {
-            margin-bottom: 15px;
+        .love-text p {
+            margin-bottom: 20px;
+            text-indent: 30px; /* Paragraf menjorok ke dalam */
         }
 
-        .highlight {
+        .highlight-name {
             color: #ff334b;
             font-weight: 500;
+            border-bottom: 1px dotted rgba(255, 51, 75, 0.4);
         }
 
-        .signature {
+        .signature-block {
+            margin-top: 40px;
+            text-align: right; /* Tanda tangan di kanan bawah surat */
+            padding-right: 10px;
+        }
+
+        .signature-title {
+            font-size: 0.8rem;
+            color: #777;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .signature-name {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: #b30016;
-            margin-top: 30px;
-            text-shadow: 0 0 5px rgba(179, 0, 22, 0.3);
+            margin-top: 5px;
+            text-shadow: 0 0 10px rgba(179, 0, 22, 0.2);
         }
 
-        /* Animasi CSS */
+        /* Animasi */
         @keyframes pulseText {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.03); opacity: 1; text-shadow: 0 0 30px rgba(153, 0, 17, 0.6); }
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.02); opacity: 1; text-shadow: 0 0 35px rgba(138, 3, 20, 0.7); }
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes unfold {
+            from { transform: scaleY(0.7) rotate(-3deg); opacity: 0; }
+            to { transform: scaleY(1) rotate(-1deg); opacity: 1; }
         }
 
         @media (max-width: 480px) {
-            #screen-1 h1 { font-size: 2.6rem; }
-            .card { padding: 35px 20px; }
-            .love-letter { font-size: 0.95rem; }
+            #screen-1 h1 { font-size: 2.8rem; }
+            .paper-letter { padding: 40px 25px; }
+            .love-text { font-size: 0.9rem; line-height: 1.9; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Canvas 3D untuk Hati Berdenyut -->
+    <!-- Canvas 3D Latar Belakang -->
     <canvas id="canvas-3d"></canvas>
 
     <!-- LAYAR 1: Tampilan Awal -->
     <div id="screen-1" onclick="bukaSurat()">
         <h1>Happy Anniversary Sayang</h1>
-        <div class="instruction">Sentuh hatinya...</div>
+        <div class="instruction">Sentuh hatinya untuk membaca...</div>
     </div>
 
-    <!-- LAYAR 2: Surat Cinta Romantis -->
+    <!-- LAYAR 2: Tampilan Lembar Surat Fisik Romantis -->
     <div id="screen-2">
-        <div class="card">
-            <h2>6 Tahun yang Indah...</h2>
-            <div class="love-letter">
-                <p>Untuk bidadariku tercinta, <br><span class="highlight">Vanisa Mutiara Sapaati Dikri</span>.</p>
-                <p>Enam tahun berjalan beriringan bersamamu adalah takdir terindah yang amat aku syukuri. Seperti perpaduan warna merah yang mendalam dan hitamnya malam yang abadi, begitulah caraku mencintaimu: sebuah ketulusan yang kuat, tenang, dan tidak akan pernah pudar oleh waktu.</p>
-                <p>Terima kasih telah menjadi rumah tempatku pulang, menjadi pelukan paling hangat di kala dunia terasa melelahkan, dan selalu melengkapi setiap kurangku dengan kasih sayangmu.</p>
-                <p>Selamat hari jadi yang ke-6, Sayangku. Mari kita terus melangkah bersama, merajut lebih banyak bahagia dan menjaga rasa ini selamanya.</p>
-                <div class="signature">Dari Rivo yang mencintaimu</div>
+        <div class="paper-letter">
+            <h2>6 Tahun Cerita Kita</h2>
+            <div class="love-text">
+                <p>Untuk bidadari duniaku tercinta, <span class="highlight-name">Vanisa Mutiara Sapaati Dikri</span>.</p>
+                <p>Enam tahun sudah kita berjalan beriringan melintasi berbagai waktu. Lewat selembar ungkapan ini, aku ingin menyampaikan rasa yang tak pernah berubah sejak pertama kali detak jantungku memilihmu. Seperti paduan warna merah yang mendalam dan pekatnya hitam malam yang abadi, begitulah caraku mencintaimu: sebuah ketulusan yang sunyi namun sangat kuat, tak bersuara namun mengakar selamanya.</p>
+                <p>Terima kasih telah bersedia menjadi tempatku pulang, menjadi pelukan paling menenangkan di kala dunia sedang terasa melelahkan, dan selalu melengkapi setiap ruang kosong dalam hidupku dengan senyuman tulusmu.</p>
+                <p>Selamat hari jadi yang ke-6, Sayangku. Mari kita genggam jemari ini lebih erat lagi, melangkah bersama merajut masa depan, dan menjaga rasa suci ini hingga akhir nanti.</p>
+                
+                <!-- Blok Tanda Tangan Pojok Kanan Bawah Surat -->
+                <div class="signature-block">
+                    <div class="signature-title">Lelaki yang beruntung,</div>
+                    <div class="signature-name">Rivo</div>
+                </div>
             </div>
         </div>
     </div>
@@ -195,8 +238,8 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Formasi Hati 3D
-        const particlesCount = 2200;
+        // Formasi Partikel Hati 3D
+        const particlesCount = 2300;
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(particlesCount * 3);
         const colors = new Float32Array(particlesCount * 3);
@@ -212,10 +255,10 @@
             positions[i * 3 + 1] = y * 0.16 + (Math.random() - 0.5) * 0.15;
             positions[i * 3 + 2] = z * 0.1;
 
-            // Merah mawar tua pekat romantis
-            colors[i * 3] = 0.45 + Math.random() * 0.15; 
+            // Merah beludru gelap (Deep Luxurious Crimson)
+            colors[i * 3] = 0.38 + Math.random() * 0.15; 
             colors[i * 3 + 1] = 0.01;                   
-            colors[i * 3 + 2] = 0.04;                  
+            colors[i * 3 + 2] = 0.03;                  
         }
 
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -232,6 +275,7 @@
         const heartParticles = new THREE.Points(geometry, material);
         scene.add(heartParticles);
 
+        // Kontrol Interaksi Rotasi Halus via Mouse / Sentuhan Jari
         let mouseX = 0;
         let mouseY = 0;
         
@@ -257,11 +301,13 @@
         const animate = () => {
             const elapsedTime = clock.getElapsedTime();
 
-            heartParticles.rotation.y = elapsedTime * 0.25 + (mouseX * 0.4);
-            heartParticles.rotation.x = Math.sin(elapsedTime * 0.15) * 0.1 + (mouseY * 0.4);
+            // Gerakan berputar konstan lembut + responsif kursor
+            heartParticles.rotation.y = elapsedTime * 0.22 + (mouseX * 0.35);
+            heartParticles.rotation.x = Math.sin(elapsedTime * 0.12) * 0.08 + (mouseY * 0.35);
 
-            let pulseFactor = isZoomed ? 2.2 : 3.0; 
-            const pulse = (isZoomed ? 0.75 : 1.0) + Math.sin(elapsedTime * pulseFactor) * 0.04;
+            // Detak Jantung Lambat Nyata
+            let pulseFactor = isZoomed ? 2.0 : 3.2; 
+            const pulse = (isZoomed ? 0.8 : 1.0) + Math.sin(elapsedTime * pulseFactor) * 0.035;
             heartParticles.scale.set(pulse, pulse, pulse);
 
             renderer.render(scene, camera);
@@ -270,7 +316,7 @@
 
         animate();
 
-        // Fungsi Transisi Layar
+        // Fungsi Transisi Membuka Surat
         function bukaSurat() {
             isZoomed = true;
             const s1 = document.getElementById('screen-1');
